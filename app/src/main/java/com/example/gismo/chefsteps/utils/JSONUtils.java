@@ -5,10 +5,13 @@ import android.content.Context;
 import com.example.gismo.chefsteps.network.model.Recipe;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.internal.LinkedTreeMap;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,7 +22,8 @@ public class JSONUtils {
 
     public static List <Recipe> getModelFromJson(String json) {
         Gson gson = new GsonBuilder().create();
-        return (List<Recipe>) gson.fromJson(json, List.class);
+        Recipe[] recipes = gson.fromJson(json, Recipe[].class);
+        return  new ArrayList<>(Arrays.asList(recipes));
     }
 
     public static String getJsonAsset(Context context) throws IOException {
