@@ -28,4 +28,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     implementation 'com.jakewharton.timber:timber:4.7.0'
+
+    //net
+    implementation 'com.google.code.gson:gson:2.8.4'
 }
