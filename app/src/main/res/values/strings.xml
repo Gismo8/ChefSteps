@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Chef Steps</string>
+    <string name="ingredients">Ingredients: %1$s</string>
+    <string name="servings">Servings: %1$s</string>
 </resources>

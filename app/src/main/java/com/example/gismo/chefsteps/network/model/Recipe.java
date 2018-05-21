@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * Created by gismo on 2018. 05. 21..
  */
@@ -78,4 +80,18 @@ public class Recipe {
         this.image = image;
     }
 
+    public String getIngredientsString() {
+        String ingredientsString = "";
+        StringBuilder sb = new StringBuilder();
+        if (ingredients.size() > 0) {
+            for (Ingredient ingredient : ingredients) {
+                sb.append(ingredient.getIngredient());
+                if (!ingredient.equals(ingredients.get(ingredients.size() - 1))) {
+                    sb.append(", ");
+                }
+            }
+            ingredientsString = sb.toString();
+        }
+        return ingredientsString;
+    }
 }

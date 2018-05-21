@@ -27,6 +27,15 @@ public class RecipeView extends RelativeLayout {
     @BindView(R.id.recipeName)
     TextView recipeName;
 
+    @BindView(R.id.servings)
+    TextView servings;
+
+    @BindView(R.id.ingredients)
+    TextView ingredients;
+
+
+
+
     public RecipeView(Context context) {
         super(context);
         init();
@@ -40,6 +49,9 @@ public class RecipeView extends RelativeLayout {
     public void bind(Recipe recipe) {
         Timber.log(1, recipe.getName() + " binded ");
         recipeName.setText(recipe.getName());
+        servings.setText(getResources().getString(R.string.servings, String.valueOf(recipe.getServings())));
+        ingredients.setText(getResources().getString(R.string.ingredients, recipe.getIngredientsString()));
+
     }
 
 }
