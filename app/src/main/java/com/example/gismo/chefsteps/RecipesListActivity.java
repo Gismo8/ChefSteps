@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
 import com.example.gismo.chefsteps.adapter.RecipeAdapter;
+import com.example.gismo.chefsteps.core.ChefStepActivity;
 import com.example.gismo.chefsteps.network.model.Recipe;
 import com.example.gismo.chefsteps.utils.JSONUtils;
 
@@ -16,7 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecipesListActivity extends AppCompatActivity {
+public class RecipesListActivity extends ChefStepActivity {
 
 
     RecipeAdapter adapter;

@@ -24,11 +24,16 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
+    //butterknife
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
+    //timber
     implementation 'com.jakewharton.timber:timber:4.7.0'
 
     //net
     implementation 'com.google.code.gson:gson:2.8.4'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="infoBarBackground">#88303F9F</color>
+    <color name="imageLayer">#55000000</color>
 </resources>

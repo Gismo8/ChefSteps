@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.gismo.chefsteps.BuildConfig;
+import com.example.gismo.chefsteps.utils.UiUtils;
 
 import timber.log.Timber;
 
@@ -20,6 +21,7 @@ public class ChefStepApplication extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+        UiUtils.measureScreenWidth(this);
     }
 
 }

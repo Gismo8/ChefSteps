@@ -1,8 +1,6 @@
 package com.example.gismo.chefsteps.ui.view;
 
 import android.content.Context;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -10,6 +8,8 @@ import android.widget.TextView;
 
 import com.example.gismo.chefsteps.R;
 import com.example.gismo.chefsteps.network.model.Recipe;
+import com.example.gismo.chefsteps.utils.UiUtils;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,6 +20,12 @@ import timber.log.Timber;
  */
 
 public class RecipeView extends RelativeLayout {
+
+    private static final String BROWNIES_URL = "https://source.unsplash.com/fDW5C0QlPGI/1600x900";
+    private static final String NUTELLA_PIE_URL = "https://source.unsplash.com/7JYVKRo7i5Q/1600x900";
+    private static final String YELLOW_CAKE_URL = "https://source.unsplash.com/k-q63hBFSB8/1600x900";
+    private static final String CHEESE_CAKE_URL = "https://source.unsplash.com/xVLJ-JFTcQE/1600x900";
+    private static final String RANDOM_DESSERT_URL = "https://source.unsplash.com/collection/941995/1600x900";
 
     @BindView(R.id.imageView)
     ImageView imageView;
@@ -32,8 +38,6 @@ public class RecipeView extends RelativeLayout {
 
     @BindView(R.id.ingredients)
     TextView ingredients;
-
-
 
 
     public RecipeView(Context context) {
@@ -52,6 +56,32 @@ public class RecipeView extends RelativeLayout {
         servings.setText(getResources().getString(R.string.servings, String.valueOf(recipe.getServings())));
         ingredients.setText(getResources().getString(R.string.ingredients, recipe.getIngredientsString()));
 
+
+        if (recipe.getImage() == null || recipe.getImage().equals("")) {
+            switch (recipe.getName()) {
+                case "Brownies":
+                    loadImage(BROWNIES_URL);
+                    break;
+                case "Yellow Cake":
+                    loadImage(YELLOW_CAKE_URL);
+                    break;
+                case "Cheesecake":
+                    loadImage(CHEESE_CAKE_URL);
+                    break;
+                case "Nutella Pie":
+                    loadImage(NUTELLA_PIE_URL);
+                    break;
+                default:
+                    loadImage(RANDOM_DESSERT_URL);
+                    break;
+            }
+        } else {
+            loadImage(recipe.getImage());
+        }
+    }
+
+    private void loadImage(String url) {
+        Picasso.get().load(url).centerCrop().resize(((int) (UiUtils.getScreenWidth() * 0.95)), imageView.getHeight()).into(imageView);
     }
 
 }
