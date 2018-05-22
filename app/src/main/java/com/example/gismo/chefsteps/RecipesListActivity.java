@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
 import com.example.gismo.chefsteps.adapter.RecipeAdapter;
@@ -19,7 +20,6 @@ import butterknife.ButterKnife;
 
 public class RecipesListActivity extends ChefStepActivity {
 
-
     RecipeAdapter adapter;
     List<Recipe> recipes;
 
@@ -32,7 +32,7 @@ public class RecipesListActivity extends ChefStepActivity {
         setContentView(R.layout.activity_recipes_list);
         ButterKnife.bind(this);
 
-        adapter = new RecipeAdapter();
+        adapter = new RecipeAdapter(this);
 
         try {
             recipes = JSONUtils.getModelFromJson(JSONUtils.getJsonAsset(this));
