@@ -13,11 +13,11 @@ public class DetailAdapter extends RecyclerViewAdapterBase<RecipeDetail, DetailV
 
     @Override
     protected DetailView onCreateItemView(ViewGroup parent, int viewType) {
-        return null;
+        return  new DetailView(parent.getContext());
     }
 
     @Override
     public void onBindViewHolder(ViewWrapper<DetailView> holder, int position) {
-
+        holder.getView().bind(getItem(position), position, position == getItemCount() - 1 ? true : false);
     }
 }

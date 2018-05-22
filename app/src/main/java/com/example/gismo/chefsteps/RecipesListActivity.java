@@ -1,6 +1,7 @@
 package com.example.gismo.chefsteps;
 
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
@@ -22,8 +24,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+
 public class RecipesListActivity extends ChefStepActivity {
 
+    private static final String TAG = RecipesListActivity.class.getSimpleName();
     RecipeAdapter adapter;
     List<Recipe> recipes;
 
@@ -47,7 +52,7 @@ public class RecipesListActivity extends ChefStepActivity {
 
         adapter.addAll(recipes);
         GridLayoutManager layoutManager = new GridLayoutManager(this,
-                getResources().getConfiguration().getLayoutDirection() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE ? 2 : 1,
+                getResources().getConfiguration().orientation == 2 ? 2 : 1,
                 LinearLayoutManager.VERTICAL,
                 false);
         recyclerView.setLayoutManager(layoutManager);
