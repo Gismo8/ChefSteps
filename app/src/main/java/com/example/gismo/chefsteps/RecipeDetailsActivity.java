@@ -23,9 +23,9 @@ public class RecipeDetailsActivity extends ChefStepActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
+        recipe = (Recipe) getIntent().getSerializableExtra(RecipeAdapter.RECIPE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        recipe = getIntent().getParcelableExtra(RecipeAdapter.RECIPE);
+        getSupportActionBar().setTitle(recipe.getName());
 
         Timber.log(1, recipe.toString());
     }

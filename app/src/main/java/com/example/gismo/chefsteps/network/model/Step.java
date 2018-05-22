@@ -6,47 +6,41 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by gismo on 2018. 05. 21..
  */
 
-public class Step implements Parcelable {
+public class Step implements Serializable, RecipeDetail {
 
     @SerializedName("id")
     @Expose
     private int id;
+
     @SerializedName("shortDescription")
     @Expose
     private String shortDescription;
+
     @SerializedName("description")
     @Expose
     private String description;
+
     @SerializedName("videoURL")
     @Expose
     private String videoURL;
+
     @SerializedName("thumbnailURL")
     @Expose
     private String thumbnailURL;
 
-    protected Step(Parcel in) {
-        id = in.readInt();
-        shortDescription = in.readString();
-        description = in.readString();
-        videoURL = in.readString();
-        thumbnailURL = in.readString();
+    public Step(int id, String shortDescription, String description, String videoURL, String thumbnailURL) {
+        this.id = id;
+        this.shortDescription = shortDescription;
+        this.description = description;
+        this.videoURL = videoURL;
+        this.thumbnailURL = thumbnailURL;
     }
-
-    public static final Creator<Step> CREATOR = new Creator<Step>() {
-        @Override
-        public Step createFromParcel(Parcel in) {
-            return new Step(in);
-        }
-
-        @Override
-        public Step[] newArray(int size) {
-            return new Step[size];
-        }
-    };
 
     public int getId() {
         return id;
@@ -88,17 +82,4 @@ public class Step implements Parcelable {
         this.thumbnailURL = thumbnailURL;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeString(shortDescription);
-        parcel.writeString(description);
-        parcel.writeString(videoURL);
-        parcel.writeString(thumbnailURL);
-    }
 }

@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -14,45 +15,40 @@ import butterknife.BindView;
  * Created by gismo on 2018. 05. 21..
  */
 
-public class Recipe implements Parcelable {
+public class Recipe implements Serializable {
 
     @SerializedName("id")
     @Expose
     private int id;
+
     @SerializedName("name")
     @Expose
     private String name;
+
     @SerializedName("ingredients")
     @Expose
     private List<Ingredient> ingredients = null;
+
     @SerializedName("steps")
     @Expose
     private List<Step> steps = null;
+
     @SerializedName("servings")
     @Expose
     private int servings;
+
     @SerializedName("image")
     @Expose
     private String image;
 
-    protected Recipe(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        servings = in.readInt();
-        image = in.readString();
+    public Recipe(int id, String name, List<Ingredient> ingredients, List<Step> steps, int servings, String image) {
+        this.id = id;
+        this.name = name;
+        this.ingredients = ingredients;
+        this.steps = steps;
+        this.servings = servings;
+        this.image = image;
     }
-
-    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
-        @Override
-        public Recipe createFromParcel(Parcel in) {
-            return new Recipe(in);
-        }
-
-        @Override
-        public Recipe[] newArray(int size) {
-            return new Recipe[size];
-        }
-    };
 
     public int getId() {
         return id;
@@ -115,18 +111,5 @@ public class Recipe implements Parcelable {
             ingredientsString = sb.toString();
         }
         return ingredientsString;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeString(name);
-        parcel.writeInt(servings);
-        parcel.writeString(image);
     }
 }

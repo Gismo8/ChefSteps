@@ -68,7 +68,6 @@ public class RecipeView extends RelativeLayout {
         servings.setText(getResources().getString(R.string.servings, String.valueOf(recipe.getServings())));
         ingredients.setText(getResources().getString(R.string.ingredients, recipe.getIngredientsString()));
 
-
         if (recipe.getImage() == null || recipe.getImage().equals("")) {
             switch (recipe.getName()) {
                 case "Brownies":
@@ -105,8 +104,7 @@ public class RecipeView extends RelativeLayout {
 
     public void startIntent() {
         Intent intent = new Intent(getContext(), RecipeDetailsActivity.class);
-        intent.putExtra(RECIPE, recipe);
+        intent.putExtra(RECIPE, (Serializable) recipe);
         getContext().startActivity(intent);
     }
-
 }
