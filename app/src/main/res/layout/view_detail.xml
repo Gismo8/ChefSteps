@@ -7,7 +7,7 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:padding="8dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/stepsBackGroundDark"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:selectableItemBackground"

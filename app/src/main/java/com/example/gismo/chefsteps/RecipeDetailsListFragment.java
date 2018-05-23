@@ -21,22 +21,22 @@ import butterknife.ButterKnife;
  * Created by gismo on 2018. 05. 22..
  */
 
-public class RecipeDetailsFragment extends ChefStepFragment {
+public class RecipeDetailsListFragment extends ChefStepFragment {
 
-    @BindView(R.id.mrecyclerView)
+    @BindView(R.id.mRecyclerView)
     RecyclerView recyclerView;
 
     protected Recipe recipe;
 
     protected DetailAdapter detailAdapter;
 
-    public RecipeDetailsFragment() {
+    public RecipeDetailsListFragment() {
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recipe_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_recipe_details_list, container, false);
         ButterKnife.bind(this, view);
         detailAdapter = new DetailAdapter();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
