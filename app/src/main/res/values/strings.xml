@@ -4,4 +4,6 @@
     <string name="servings">Servings: %1$s</string>
     <string name="steps">Step %1$s</string>
     <string name="details_ingredients">Ingredients (%1$s)</string>
+    <string name="previous_step">Previous step</string>
+    <string name="next_step">Next step</string>
 </resources>
