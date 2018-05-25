@@ -1,8 +1,6 @@
 package com.example.gismo.chefsteps.ui.view;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,12 +9,9 @@ import android.widget.TextView;
 
 import com.example.gismo.chefsteps.R;
 import com.example.gismo.chefsteps.RecipeDetailsActivity;
-import com.example.gismo.chefsteps.network.model.Ingredient;
 import com.example.gismo.chefsteps.network.model.IngredientWrapper;
 import com.example.gismo.chefsteps.network.model.RecipeDetail;
 import com.example.gismo.chefsteps.network.model.Step;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +55,7 @@ public class DetailView extends RelativeLayout {
             shortDescription.setText(((Step) recipeDetail).getShortDescription());
             stepIndex.setText(getResources().getString(R.string.steps, String.valueOf(position)));
             icon.setImageResource(isLastItem ? R.drawable.ready : R.drawable.play);
+            root.setBackgroundColor(getResources().getColor(R.color.stepsBackGround));
         } else {
             ingredientWrapper = (IngredientWrapper) recipeDetail;
             shortDescription.setVisibility(GONE);
@@ -71,13 +67,13 @@ public class DetailView extends RelativeLayout {
         root.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                onDetailItemClickListener.onClick(recipeDetail);
+                onDetailItemClickListener.onDetailItemClick(recipeDetail);
             }
         });
     }
 
     public interface OnDetailItemClickListener {
-        void onClick(RecipeDetail recipeDetail);
+        void onDetailItemClick(RecipeDetail recipeDetail);
     }
 
 

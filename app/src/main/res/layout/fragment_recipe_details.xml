@@ -15,12 +15,24 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textSize="17sp"
+        android:textStyle="bold"
         android:justificationMode="inter_word"
         android:layout_below="@id/playerView"
-        android:textColor="@color/colorPrimaryDark"
+        android:background="@android:color/white" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textSize="15sp"
+        android:justificationMode="inter_word"
+        android:layout_below="@id/title"
         android:background="@android:color/white" />
 
 </RelativeLayout>

@@ -12,16 +12,17 @@
     <LinearLayout
         android:id="@+id/navigationContainer"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:visibility="gone"
         android:weightSum="100">
 
         <LinearLayout
-            android:id="@+id/previousContainer"
+            android:id="@+id/previousNavigationContainer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
+            android:background="@color/colorPrimary"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:selectableItemBackground">
@@ -29,24 +30,27 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:padding="16dp"
-                android:src="@drawable/left_arrow" />
+                android:padding="8dp"
+                android:src="@drawable/arrow_left"
+                android:tint="@android:color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="-1dp"
                 android:autoSizeTextType="uniform"
                 android:text="@string/previous_step"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/nextContainer"
+            android:id="@+id/nextNavigationContainer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
+            android:background="@color/colorPrimary"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:selectableItemBackground"
@@ -56,16 +60,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="-1dp"
                 android:autoSizeTextType="uniform"
                 android:text="@string/next_step"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:padding="16dp"
-                android:src="@drawable/right_arrow" />
+                android:padding="8dp"
+                android:src="@drawable/arrow_right"
+                android:tint="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
 

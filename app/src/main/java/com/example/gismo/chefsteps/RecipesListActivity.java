@@ -41,7 +41,6 @@ public class RecipesListActivity extends ChefStepActivity {
         setContentView(R.layout.activity_recipes_list);
         ButterKnife.bind(this);
 
-
         adapter = new RecipeAdapter(this);
 
         try {

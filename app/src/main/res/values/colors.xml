@@ -7,5 +7,6 @@
     <color name="imageLayer">#33000000</color>
     <color name="stepsBackGround">#FF9800</color>
     <color name="stepsBackGroundDark">#F57C00</color>
+    <color name="inactive">#A1A1A1</color>
 
 </resources>
