@@ -60,6 +60,7 @@ public class RecipeDetailFragment extends ChefStepFragment {
 
     protected RecipeDetail recipeDetail;
     protected SimpleExoPlayer player;
+    protected boolean twoPane;
 
     public RecipeDetailFragment() {
     }
@@ -69,11 +70,17 @@ public class RecipeDetailFragment extends ChefStepFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recipe_details, container, false);
         ButterKnife.bind(this, view);
-        if (getResources().getConfiguration().orientation == 2) {
+        if (getResources().getConfiguration().orientation == 2 && !twoPane) {
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                     playerView.getLayoutParams();
-            params.width=params.MATCH_PARENT;
-            params.height=params.MATCH_PARENT;
+            params.width = params.MATCH_PARENT;
+            params.height = params.MATCH_PARENT;
+            playerView.setLayoutParams(params);
+        } else if (twoPane) {
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                    playerView.getLayoutParams();
+            params.width = params.MATCH_PARENT;
+            params.height = getResources().getDisplayMetrics().heightPixels / 2;
             playerView.setLayoutParams(params);
         }
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
@@ -127,5 +134,9 @@ public class RecipeDetailFragment extends ChefStepFragment {
     public void onDestroyView() {
         player.release();
         super.onDestroyView();
+    }
+
+    public void setTwoPane() {
+        twoPane = true;
     }
 }

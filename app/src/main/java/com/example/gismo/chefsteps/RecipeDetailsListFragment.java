@@ -41,6 +41,8 @@ public class RecipeDetailsListFragment extends ChefStepFragment {
         detailAdapter = new DetailAdapter();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setAdapter(detailAdapter);
+        recyclerView.setHasFixedSize(true);
+        linearLayoutManager.setAutoMeasureEnabled(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         if (recipe != null) {
             bind(recipe);
