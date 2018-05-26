@@ -89,9 +89,6 @@ public class RecipeDetailFragment extends ChefStepFragment {
         TrackSelector trackSelector =
                 new DefaultTrackSelector(videoTrackSelectionFactory);
         player = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector);
-
-
-
         playerView.setPlayer(player);
         bind(recipeDetail);
         return view;

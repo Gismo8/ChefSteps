@@ -51,7 +51,7 @@ public class RecipesListActivity extends ChefStepActivity {
 
         adapter.addAll(recipes);
         GridLayoutManager layoutManager = new GridLayoutManager(this,
-                getResources().getConfiguration().orientation == 2 ? 2 : 1,
+                getResources().getConfiguration().orientation == 2 ? 3 : 1,
                 LinearLayoutManager.VERTICAL,
                 false);
         recyclerView.setLayoutManager(layoutManager);
