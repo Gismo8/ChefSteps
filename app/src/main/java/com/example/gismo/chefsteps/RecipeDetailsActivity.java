@@ -22,6 +22,9 @@ import com.example.gismo.chefsteps.network.model.Recipe;
 import com.example.gismo.chefsteps.network.model.RecipeDetail;
 import com.example.gismo.chefsteps.network.model.Step;
 import com.example.gismo.chefsteps.ui.view.DetailView;
+import com.example.gismo.chefsteps.utils.RecipeUtils;
+import com.example.gismo.chefsteps.widget.IngredientRemoteService;
+import com.example.gismo.chefsteps.widget.UpdateIngredientWidgetService;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
@@ -31,6 +34,7 @@ import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -94,6 +98,8 @@ public class RecipeDetailsActivity extends ChefStepActivity implements DetailVie
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(recipe.getName());
+
+        UpdateIngredientWidgetService.startUpdateIngredientService(this, RecipeUtils.getIngredientsList(recipe), recipe.getName());
     }
 
     private void bindForTwoPane() {

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#4CAF50</color>
-    <color name="colorPrimaryTransparent">#DD4CAF50</color>
+    <color name="colorPrimaryTransparent">#444CAF50</color>
+    <color name="widgetBackgroundTransparentDarker">#55000000</color>
+    <color name="widgetBackgroundTransparentDark">#55444444</color>
     <color name="colorPrimaryDark">#388E3C</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="infoBarBackground">#88F57C00</color>
+    <color name="infoBarBackground">#884CAF50</color>
     <color name="imageLayer">#33000000</color>
-    <color name="stepsBackGround">#FF9800</color>
-    <color name="stepsBackGroundDark">#F57C00</color>
+    <color name="stepsBackGround">#4CAF50</color>
+    <color name="stepsBackGroundDark">#388E3C</color>
     <color name="inactive">#A1A1A1</color>
 
 </resources>

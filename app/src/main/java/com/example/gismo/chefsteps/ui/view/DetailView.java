@@ -25,8 +25,8 @@ public class DetailView extends RelativeLayout {
     @BindView(R.id.root)
     RelativeLayout root;
 
-    @BindView(R.id.stepIndex)
-    TextView stepIndex;
+    @BindView(R.id.detailTitle)
+    TextView detailTitle;
 
     @BindView(R.id.icon)
     ImageView icon;
@@ -53,15 +53,15 @@ public class DetailView extends RelativeLayout {
     public void bind(final RecipeDetail recipeDetail, int position, boolean isLastItem) {
         if (recipeDetail instanceof Step) {
             shortDescription.setText(((Step) recipeDetail).getShortDescription());
-            stepIndex.setText(getResources().getString(R.string.steps, String.valueOf(position)));
+            detailTitle.setText(getResources().getString(R.string.steps, String.valueOf(position)));
             icon.setImageResource(isLastItem ? R.drawable.ready : R.drawable.play);
             root.setBackgroundColor(getResources().getColor(R.color.stepsBackGround));
         } else {
             ingredientWrapper = (IngredientWrapper) recipeDetail;
             shortDescription.setVisibility(GONE);
-            stepIndex.setText(getResources().getString(R.string.details_ingredients, ingredientWrapper.getIngredientCount()));
-            stepIndex.setGravity(CENTER_VERTICAL);
-            root.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            detailTitle.setText(getResources().getString(R.string.details_ingredients, ingredientWrapper.getIngredientCount()));
+            detailTitle.setGravity(CENTER_VERTICAL);
+            root.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
             icon.setImageResource(R.drawable.ingredients);
         }
         root.setOnClickListener(new OnClickListener() {
