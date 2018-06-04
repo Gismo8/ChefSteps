@@ -65,6 +65,7 @@ public class RecipesListActivity extends ChefStepActivity {
                 }
                 if (intentRecipe != null) {
                 Intent intent = new Intent(this, RecipeDetailsActivity.class);
+                intent.setAction(Intent.ACTION_VIEW);
                 intent.putExtra(RECIPE, (Serializable) intentRecipe);
                 startActivity(intent);
                 }

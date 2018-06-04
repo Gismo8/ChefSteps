@@ -34,6 +34,7 @@ public class RecipeView extends RelativeLayout {
     private static final String YELLOW_CAKE_URL = "https://source.unsplash.com/k-q63hBFSB8/1600x900";
     private static final String CHEESE_CAKE_URL = "https://source.unsplash.com/xVLJ-JFTcQE/1600x900";
     private static final String RANDOM_DESSERT_URL = "https://source.unsplash.com/collection/941995/1600x900";
+    public static final String START_RECIPE_DETAILS_ACTIVITY = "start_recipe_details_activity";
 
     @BindView(R.id.imageView)
     ImageView imageView;
@@ -104,6 +105,7 @@ public class RecipeView extends RelativeLayout {
 
     public void startIntent() {
         Intent intent = new Intent(getContext(), RecipeDetailsActivity.class);
+        intent.setAction(START_RECIPE_DETAILS_ACTIVITY);
         intent.putExtra(RECIPE, (Serializable) recipe);
         getContext().startActivity(intent);
     }
