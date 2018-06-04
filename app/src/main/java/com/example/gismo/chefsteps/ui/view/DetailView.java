@@ -12,6 +12,7 @@ import com.example.gismo.chefsteps.RecipeDetailsActivity;
 import com.example.gismo.chefsteps.network.model.IngredientWrapper;
 import com.example.gismo.chefsteps.network.model.RecipeDetail;
 import com.example.gismo.chefsteps.network.model.Step;
+import com.example.gismo.chefsteps.utils.RecipeUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,24 +54,30 @@ public class DetailView extends RelativeLayout {
     public void bind(final RecipeDetail recipeDetail, int position, boolean isLastItem) {
         if (recipeDetail instanceof Step) {
             shortDescription.setText(((Step) recipeDetail).getShortDescription());
+            shortDescription.setMaxLines(1);
             detailTitle.setText(getResources().getString(R.string.steps, String.valueOf(position)));
             icon.setImageResource(isLastItem ? R.drawable.ready : R.drawable.play);
+            icon.setVisibility(VISIBLE);
             root.setBackgroundColor(getResources().getColor(R.color.stepsBackGround));
+            root.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onDetailItemClickListener.onDetailItemClick(recipeDetail);
+                }
+            });
         } else {
             ingredientWrapper = (IngredientWrapper) recipeDetail;
-            shortDescription.setVisibility(GONE);
+            shortDescription.setMaxLines(Integer.MAX_VALUE);
             detailTitle.setText(getResources().getString(R.string.details_ingredients, ingredientWrapper.getIngredientCount()));
+            shortDescription.setText(RecipeUtils.getIngredients(ingredientWrapper));
             detailTitle.setGravity(CENTER_VERTICAL);
             root.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
             icon.setImageResource(R.drawable.ingredients);
+            icon.setVisibility(GONE);
+            root.setOnClickListener(null);
         }
-        root.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onDetailItemClickListener.onDetailItemClick(recipeDetail);
-            }
-        });
     }
+
 
     public interface OnDetailItemClickListener {
         void onDetailItemClick(RecipeDetail recipeDetail);
