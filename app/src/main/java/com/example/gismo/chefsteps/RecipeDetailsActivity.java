@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -49,6 +50,9 @@ import timber.log.Timber;
 
 public class RecipeDetailsActivity extends ChefStepActivity implements DetailView.OnDetailItemClickListener {
 
+    private static final String PLAYER_CURRENT_POSITION = "player_current_position";
+    private static final String CURRENT_WINDOW_INDEX = "current_window_index";
+
     @BindView(R.id.fragmentContainer)
     FrameLayout fragmentContainer;
 
@@ -73,6 +77,9 @@ public class RecipeDetailsActivity extends ChefStepActivity implements DetailVie
     protected RecipeDetailFragment detailFragment;
     protected Step currentStep;
     protected boolean twoPane;
+    protected long position = 0;
+    private int currentWindow;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +87,8 @@ public class RecipeDetailsActivity extends ChefStepActivity implements DetailVie
         recipe = (Recipe) getIntent().getSerializableExtra(RecipeAdapter.RECIPE);
         if (savedInstanceState != null) {
             currentStep = (Step) savedInstanceState.getSerializable(RECIPE_DETAIL);
+            position = savedInstanceState.getLong(PLAYER_CURRENT_POSITION, 0);
+            currentWindow = savedInstanceState.getInt(CURRENT_WINDOW_INDEX, 0);
         }
 
         setContentView(R.layout.activity_recipe_details);
@@ -232,6 +241,11 @@ public class RecipeDetailsActivity extends ChefStepActivity implements DetailVie
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putSerializable(RECIPE_DETAIL, currentStep);
+        if (detailFragment.player != null) {
+            savedInstanceState.putLong(PLAYER_CURRENT_POSITION, detailFragment.player.getCurrentPosition());
+            savedInstanceState.putInt(CURRENT_WINDOW_INDEX, detailFragment.player.getCurrentWindowIndex());
+            Log.d("DetailFragment", "position saved" + String.valueOf(detailFragment.player.getCurrentPosition()));
+        }
     }
 
     @Override
@@ -248,5 +262,9 @@ public class RecipeDetailsActivity extends ChefStepActivity implements DetailVie
                 super.onBackPressed();
             }
         }
+    }
+
+    public long getPlayerPosition() {
+        return position;
     }
 }
