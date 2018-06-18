@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/playerView"
         android:layout_width="match_parent"
         android:layout_height="195dp"
         android:layout_alignParentTop="true"
-        app:resize_mode="fit"
-        android:background="@android:color/black"/>
+        android:background="@android:color/black"
+        app:resize_mode="fixed_width" />
+
+    <FrameLayout
+        android:id="@+id/thumbNailLayer"
+        android:layout_width="match_parent"
+        android:layout_height="195dp"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/thumbNail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
+        android:layout_below="@id/playerView"
+        android:background="@android:color/white"
+        android:justificationMode="inter_word"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
+        android:paddingTop="16dp"
         android:textSize="17sp"
-        android:textStyle="bold"
-        android:justificationMode="inter_word"
-        android:layout_below="@id/playerView"
-        android:background="@android:color/white" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:textSize="15sp"
-        android:justificationMode="inter_word"
         android:layout_below="@id/title"
-        android:background="@android:color/white" />
+        android:background="@android:color/white"
+        android:justificationMode="inter_word"
+        android:padding="16dp"
+        android:textSize="15sp" />
 
 </RelativeLayout>
